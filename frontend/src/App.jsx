@@ -185,11 +185,11 @@ const FontGroupManager = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-12">
-      <h1 className="text-3xl font-bold">Font Group Management System</h1>
+      <h1 className="text-3xl font-bold text-center border-b-2 pb-2"><span className="text-amber-800">Font Group</span> Management System</h1>
 
       {/* Upload */}
-      <section className="bg-white p-6 rounded shadow">
-        <h2 className="text-xl font-semibold mb-4">Upload Font</h2>
+      <section className="bg-white p-6 rounded shadow cursor-pointer">
+        <h2 className="text-xl font-semibold mb-5">Upload Font</h2>
         <input type="file" accept=".ttf" onChange={handleFontUpload} />
         <p className="text-sm mt-2">{uploadStatus}</p>
       </section>
