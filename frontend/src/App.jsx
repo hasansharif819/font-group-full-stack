@@ -223,7 +223,7 @@ const FontGroupManager = () => {
             className="border rounded px-3 py-2 mb-4 w-full"
             type="text"
             required
-            placeholder="Group Name"
+            placeholder="Enter Group Name"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
@@ -255,13 +255,13 @@ const FontGroupManager = () => {
           <button
             type="button"
             onClick={handleAddFontRow}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600"
           >
             Add Font
           </button>
           <button
             type="submit"
-            className="bg-green-500 text-white px-4 py-2 rounded ml-4"
+            className="bg-green-500 text-white px-4 py-2 rounded ml-4 cursor-pointer hover:bg-green-600"
           >
             Create Group
           </button>
