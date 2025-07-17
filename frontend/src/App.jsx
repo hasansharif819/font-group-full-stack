@@ -175,7 +175,9 @@ const FontGroupManager = () => {
       const json = await res.json();
       const updated = json.data;
       setFontGroups((prev) =>
-        prev.map((g) => (g._id === updated._id || g.id === updated.id ? updated : g))
+        prev.map((g) =>
+          g._id === updated._id || g.id === updated.id ? updated : g
+        )
       );
       setEditModalOpen(false);
     } catch {
@@ -185,7 +187,9 @@ const FontGroupManager = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-12">
-      <h1 className="text-3xl font-bold text-center border-b-2 pb-2"><span className="text-amber-800">Font Group</span> Management System</h1>
+      <h1 className="text-3xl font-bold text-center border-b-2 pb-2">
+        <span className="text-amber-800">Font Group</span> Management System
+      </h1>
 
       {/* Upload */}
       <section className="bg-white p-6 rounded shadow cursor-pointer">
@@ -271,27 +275,32 @@ const FontGroupManager = () => {
       {/* Groups */}
       <section className="bg-white p-6 rounded shadow">
         <h2 className="text-xl font-semibold mb-4">Font Groups</h2>
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-100 py-5">
+        <table className="min-w-full divide-y divide-gray-200 border-separate border-spacing-y-3">
+          <thead className="bg-gray-100">
             <tr className="text-left">
-              <th>Group Name</th>
-              <th>Fonts</th>
-              <th>Actions</th>
+              <th className="px-4 py-2">Group Name</th>
+              <th className="px-4 py-2">Fonts</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {fontGroups.map((group) => (
-              <tr key={group._id || group.id}>
-                <td>{group.name}</td>
-                <td>
+              <tr
+                key={group._id || group.id}
+                className="bg-white shadow rounded"
+              >
+                <td className="px-4 py-3">{group.name}</td>
+                <td className="px-4 py-3">
                   <ul>
                     {group.fonts.map((fontId) => {
-                      const font = fonts.find((f) => f._id === fontId || f.id === fontId);
+                      const font = fonts.find(
+                        (f) => f._id === fontId || f.id === fontId
+                      );
                       return font ? <li key={fontId}>{font.name}</li> : null;
                     })}
                   </ul>
                 </td>
-                <td>
+                <td className="px-4 py-3">
                   <button
                     className="bg-yellow-500 text-white px-3 py-1 rounded mr-2 cursor-pointer hover:bg-yellow-600"
                     onClick={() => openEditModal(group)}
@@ -333,7 +342,10 @@ const FontGroupManager = () => {
                   >
                     <option value="">Select Font</option>
                     {fonts.map((font) => (
-                      <option key={font._id || font.id} value={font._id || font.id}>
+                      <option
+                        key={font._id || font.id}
+                        value={font._id || font.id}
+                      >
                         {font.name}
                       </option>
                     ))}
