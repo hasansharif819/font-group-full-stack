@@ -272,8 +272,8 @@ const FontGroupManager = () => {
       <section className="bg-white p-6 rounded shadow">
         <h2 className="text-xl font-semibold mb-4">Font Groups</h2>
         <table className="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
+          <thead className="bg-gray-100 py-5">
+            <tr className="text-left">
               <th>Group Name</th>
               <th>Fonts</th>
               <th>Actions</th>
@@ -293,13 +293,13 @@ const FontGroupManager = () => {
                 </td>
                 <td>
                   <button
-                    className="bg-yellow-500 text-white px-3 py-1 rounded mr-2"
+                    className="bg-yellow-500 text-white px-3 py-1 rounded mr-2 cursor-pointer hover:bg-yellow-600"
                     onClick={() => openEditModal(group)}
                   >
                     Edit
                   </button>
                   <button
-                    className="bg-red-500 text-white px-3 py-1 rounded"
+                    className="bg-red-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-red-600"
                     onClick={() => handleDeleteGroup(group._id || group.id)}
                   >
                     Delete
@@ -344,13 +344,13 @@ const FontGroupManager = () => {
                 <button
                   type="button"
                   onClick={() => setEditModalOpen(false)}
-                  className="bg-gray-300 px-4 py-2 rounded"
+                  className="bg-gray-300 px-4 py-2 rounded cursor-pointer hover:bg-gray-400"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600"
                 >
                   Save
                 </button>
