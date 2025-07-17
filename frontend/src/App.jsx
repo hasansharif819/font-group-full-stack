@@ -121,7 +121,21 @@ const FontGroupManager = () => {
       });
       if (!res.ok) throw new Error("Failed to create group");
       const json = await res.json();
-      const newGroup = json.data;
+      let newGroup = json.data;
+
+      // Map font IDs to full font objects from your fonts state
+      newGroup = {
+        ...newGroup,
+        fonts: newGroup.fonts.map((fontId) => {
+          return (
+            fonts.find((f) => f._id === fontId || f.id === fontId) || {
+              _id: fontId,
+              name: "Unknown",
+            }
+          );
+        }),
+      };
+
       setFontGroups((prev) => [...prev, newGroup]);
       setGroupName("");
       setFontRows([""]);
