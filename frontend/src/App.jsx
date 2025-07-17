@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -123,23 +122,30 @@ const FontGroupManager = () => {
       const json = await res.json();
       let newGroup = json.data;
 
-      // Map font IDs to full font objects from your fonts state
-      newGroup = {
-        ...newGroup,
-        fonts: newGroup.fonts.map((fontId) => {
-          return (
-            fonts.find((f) => f._id === fontId || f.id === fontId) || {
-              _id: fontId,
-              name: "Unknown",
-            }
-          );
-        }),
-      };
+      if (
+        newGroup.fonts &&
+        newGroup.fonts.length > 0 &&
+        typeof newGroup.fonts[0] === "string"
+      ) {
+        // If fonts array contains IDs, map to font objects
+        newGroup = {
+          ...newGroup,
+          fonts: newGroup.fonts.map((fontId) => {
+            return (
+              fonts.find((f) => f._id === fontId || f.id === fontId) || {
+                _id: fontId,
+                name: "Unknown",
+              }
+            );
+          }),
+        };
+      }
 
       setFontGroups((prev) => [...prev, newGroup]);
       setGroupName("");
       setFontRows([""]);
     } catch (error) {
+      console.error(error);
       alert("Failed to create font group");
     }
   };
@@ -299,6 +305,7 @@ const FontGroupManager = () => {
             <tr className="text-left">
               <th className="px-4 py-2">Group Name</th>
               <th className="px-4 py-2">Fonts</th>
+              <th className="px-4 py-2">Counts</th>
               <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
@@ -315,6 +322,9 @@ const FontGroupManager = () => {
                       <li key={font._id || font.id}>{font.name}</li>
                     ))}
                   </ul>
+                </td>
+                <td className="px-4 py-3">
+                  {group.fonts.length} Font{group.fonts.length !== 1 ? "s" : ""}
                 </td>
                 <td className="px-4 py-3">
                   <button
