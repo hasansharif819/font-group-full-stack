@@ -199,20 +199,25 @@ const FontGroupManager = () => {
       </section>
 
       {/* Fonts */}
-      <section className="bg-white p-6 rounded shadow">
+      <section className="bg-white p-2 rounded shadow">
         <h2 className="text-xl font-semibold mb-4">Available Fonts</h2>
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-100 py-5">
+        <table className="min-w-full border-separate border-spacing-y-3">
+          <thead className="bg-gray-100">
             <tr className="text-left">
-              <th>Name</th>
-              <th>Preview</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Preview</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 gap-2">
+          <tbody>
             {fonts.map((font) => (
-              <tr key={font._id || font.id} className="hover:bg-gray-50">
-                <td>{font.name}</td>
-                <td style={{ fontFamily: font.name }}>Example Style</td>
+              <tr
+                key={font._id || font.id}
+                className="bg-white shadow-sm rounded hover:bg-gray-50"
+              >
+                <td className="px-4 py-3">{font.name}</td>
+                <td className="px-4 py-3" style={{ fontFamily: font.name }}>
+                  Example Style
+                </td>
               </tr>
             ))}
           </tbody>
