@@ -297,12 +297,9 @@ const FontGroupManager = () => {
                 <td className="px-4 py-3">{group.name}</td>
                 <td className="px-4 py-3">
                   <ul>
-                    {group.fonts.map((fontId) => {
-                      const font = fonts.find(
-                        (f) => f._id === fontId || f.id === fontId
-                      );
-                      return font ? <li key={fontId}>{font.name}</li> : null;
-                    })}
+                    {group.fonts.map((font) => (
+                      <li key={font._id || font.id}>{font.name}</li>
+                    ))}
                   </ul>
                 </td>
                 <td className="px-4 py-3">
